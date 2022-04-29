@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.devfun.settingweb_boot.dao.StatisticMapper">
+ 
+    <select id="selectYearLogin" parameterType="string" resultType="hashMap">
+        select count(*) as totCnt from statistc.login ri where left(ri.loginDate, 2) = #{year};
+    </select>
+    
+    <select id="selectMonthLogin" parameterType="string" resultType="hashMap">
+       select count(*) as totCnt
+        from statistc.login ri 
+        where  SUBSTRING(ri.loginDate, 3,2) = #{month};
+    </select>
+    
+     <select id="selectDayLogin" parameterType="string" resultType="hashMap">
+         select count(*) as totCnt
+        from statistc.login ri 
+        where  SUBSTRING(ri.loginDate, 5,2) = #{month};
+    </select>
+    
+     <select id="selectTeamLogin" parameterType="string" resultType="hashMap">
+        select count(*) as totCnt
+         from statistc.login ri 
+         LEFT JOIN statistc.user le 
+         ON ri.userID = le.userID 
+         where SUBSTRING(ri.loginDate, 3,2) = #{month} and le.HR_ORGAN = #{team}; 
+    </select>
+    
+    <select id="selectBusinessLogin" parameterType="string" resultType="hashMap">
+        select count(*) as BusinessDay
+        from statistc.login ri 
+        where weekday(left(ri.loginDate, 6)) >= 0 
+        and weekday(left(ri.loginDate, 6))<![CDATA[<= 4]]>;
+    </select>
+    
+</mapper>
+
