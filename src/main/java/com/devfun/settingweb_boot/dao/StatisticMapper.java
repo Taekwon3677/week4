@@ -9,4 +9,6 @@ public interface  StatisticMapper {
     public HashMap<String, Object> selectDayLogin(String day);
     public HashMap<String, Object> selectTeamLogin(String team, String month);
     public HashMap<String, Object> selectBusinessLogin(String string);
+    
+    
 }

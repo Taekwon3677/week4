@@ -1,5 +1,5 @@
 package com.devfun.settingweb_boot.service;
- 
+import java.util.ArrayList;
 import java.util.HashMap;
  
 public interface StatisticService {
@@ -10,5 +10,5 @@ public interface StatisticService {
     
     public HashMap<String,Object> teamloginNum(String team, String month);
     public HashMap<String,Object> businessloginNum(String string);
-    
+    public HashMap<String,Object> restinfosearch(ArrayList list);
 }

@@ -1,14 +1,19 @@
 package com.devfun.settingweb_boot.service;
- 
+import java.util.ArrayList; 
  
 import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
  
 import com.devfun.settingweb_boot.dao.StatisticMapper;
- 
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.io.BufferedReader;
+import java.io.IOException;
 @Service
-public class StatisticServiceImpl implements StatisticService {
+public class StatisticServiceImpl implements StatisticService{
     
     
     @Autowired
@@ -88,6 +93,7 @@ public class StatisticServiceImpl implements StatisticService {
         
         return retVal;
     }
+    @Override
     public HashMap<String, Object> businessloginNum(String string) {
         // TODO Auto-generated method stub
         HashMap<String, Object> retVal = new HashMap<String,Object>();
@@ -105,4 +111,21 @@ public class StatisticServiceImpl implements StatisticService {
         
         return retVal;
     }
+    @Override
+    public HashMap<String, Object> restinfosearch(ArrayList list) {
+        // TODO Auto-generated method stub
+        HashMap<String, Object> retVal = new HashMap<String,Object>();
+        
+        
+            retVal.put("UserCount", "test");
+            retVal.put("Holiday", list);
+            retVal.put("is_success", false);
+            
+        
+        
+        return retVal;
+    }
+    
+    
+    
 }
